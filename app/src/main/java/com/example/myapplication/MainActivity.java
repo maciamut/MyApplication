@@ -1,5 +1,6 @@
 package com.example.myapplication;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -15,6 +16,7 @@ import com.google.android.material.snackbar.Snackbar;
 
 public class MainActivity extends AppCompatActivity {
 
+    @SuppressLint("ClickableViewAccessibility")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -23,10 +25,10 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
 
-        ConstraintLayout content = (ConstraintLayout) findViewById(R.id.content_main);
-
+        ConstraintLayout content = findViewById(R.id.content_main);
 
         content.setOnTouchListener(new OnSwipeTouchListener(MainActivity.this) {
+
             public void onSwipeTop() {
                 Toast.makeText(MainActivity.this, "Top", Toast.LENGTH_SHORT).show();
             }
@@ -39,9 +41,7 @@ public class MainActivity extends AppCompatActivity {
             public void onSwipeBottom() {
                 Toast.makeText(MainActivity.this, "Bottom", Toast.LENGTH_SHORT).show();
             }
-
         });
-
 
         FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -52,6 +52,8 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
+
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -74,4 +76,6 @@ public class MainActivity extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
+
+
 }

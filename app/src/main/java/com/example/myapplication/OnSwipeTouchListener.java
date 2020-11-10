@@ -30,7 +30,9 @@ public class OnSwipeTouchListener implements View.OnTouchListener {
     public void onSwipeBottom() {
     }
 
+
     public boolean onTouch(View v, MotionEvent event) {
+        v.performClick();
         return gestureDetector.onTouchEvent(event);
     }
 
